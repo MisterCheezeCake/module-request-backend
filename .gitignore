@@ -1,0 +1,7 @@
+# NodeJS
+node_modules/
+
+# Google Cloud
+
+app.yaml
+.gcloudignore
