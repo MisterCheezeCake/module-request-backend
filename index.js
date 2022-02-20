@@ -3,12 +3,14 @@ const config = require("./config.json")
 const { WebhookClient, MessageEmbed } = require("discord.js")
 const client = new WebhookClient({url: config.webhook})
 const rateLimit = require("express-rate-limit");
+const cors = require("cors");
 const app = express()
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
   max: 1
 });
+app.use(cors({origin: "*", preflightContinue: true}))
 app.use(limiter)
 app.use(express.json())
 app.post('/', (req, res) => {
